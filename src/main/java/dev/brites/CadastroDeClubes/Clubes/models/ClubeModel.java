@@ -1,5 +1,6 @@
-package models;
+package dev.brites.CadastroDeClubes.Clubes.models;
 
+import dev.brites.CadastroDeClubes.Ligas.models.LigaModel;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,15 +12,18 @@ public class ClubeModel {
     private Long id;
     private String name;
     private Integer titulos;
-    private String estado;
+    private String estadio;
+    @ManyToOne
+    @JoinColumn(name = "liga_id")
+    private LigaModel liga;
 
     public ClubeModel() {
     }
 
-    public ClubeModel(String name, Integer titulos, String estado) {
+    public ClubeModel(String name, Integer titulos, String estadio) {
         this.name = name;
         this.titulos = titulos;
-        this.estado = estado;
+        this.estadio = estadio;
     }
 
     public String getName() {
@@ -38,11 +42,11 @@ public class ClubeModel {
         this.titulos = titulos;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getEstadio() {
+        return estadio;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setEstadio(String estadio) {
+        this.estadio = estadio;
     }
 }
