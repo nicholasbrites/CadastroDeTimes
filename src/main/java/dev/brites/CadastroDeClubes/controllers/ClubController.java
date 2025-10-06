@@ -1,4 +1,4 @@
-package dev.brites.CadastroDeClubes.Clubes.controllers;
+package dev.brites.CadastroDeClubes.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping
-public class ClubeController {
+public class ClubController {
 
-    @GetMapping("/boasVindas")
+    @GetMapping("/teste")
     public String boasVindar(){
-        return "Essa é a minha primeira mensagem nessa rota!";
+        return "Caso essa mensagem apareça, parabéns!";
     }
 
 }

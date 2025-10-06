@@ -1,26 +1,25 @@
-package dev.brites.CadastroDeClubes.Clubes.models;
+package dev.brites.CadastroDeClubes.infrastructure.entities;
 
-import dev.brites.CadastroDeClubes.Ligas.models.LigaModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "tb_clubes")
+@Table(name = "tb_clubs")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class ClubeModel {
+public class ClubModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Integer titulos;
-    private String estadio;
+    private Integer titles;
+    private String stadium;
     @ManyToOne
-    @JoinColumn(name = "liga_id")
-    private LigaModel liga;
+    @JoinColumn(name = "league_id")
+    private LeagueModel league;
 
 }

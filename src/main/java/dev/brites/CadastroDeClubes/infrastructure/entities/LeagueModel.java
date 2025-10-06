@@ -1,6 +1,5 @@
-package dev.brites.CadastroDeClubes.Ligas.models;
+package dev.brites.CadastroDeClubes.infrastructure.entities;
 
-import dev.brites.CadastroDeClubes.Clubes.models.ClubeModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,18 +8,18 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "tb_ligas")
+@Table(name = "tb_leagues")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class LigaModel {
+public class LeagueModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String nacionalidade;
-    @OneToMany(mappedBy = "ligas")
-    private List<ClubeModel> clubes;
+    private String country;
+    @OneToMany(mappedBy = "leagues")
+    private List<ClubModel> clubs;
 
 }
