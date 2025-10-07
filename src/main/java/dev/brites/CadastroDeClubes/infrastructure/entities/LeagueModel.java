@@ -19,7 +19,7 @@ public class LeagueModel {
     private Long id;
     private String name;
     private String country;
-    @OneToMany(mappedBy = "leagues")
+    @OneToMany(mappedBy = "league")
     private List<ClubModel> clubs;
 
 }
