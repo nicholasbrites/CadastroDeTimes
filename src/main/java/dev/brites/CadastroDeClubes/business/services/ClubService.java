@@ -29,14 +29,14 @@ public class ClubService {
     }
 
     public void updateClubById(Long id, ClubModel clubModel){
-        ClubModel clubBase = findClubById(id);
+        ClubModel clubUpdated = findClubById(id);
 
-        Optional.ofNullable(clubModel.getName()).ifPresent(clubBase::setName);
-        Optional.ofNullable(clubModel.getTitles()).ifPresent(clubBase::setTitles);
-        Optional.ofNullable(clubModel.getStadium()).ifPresent(clubBase::setStadium);
-        Optional.ofNullable(clubModel.getLeague()).ifPresent(clubBase::setLeague);
+        Optional.ofNullable(clubModel.getName()).ifPresent(clubUpdated::setName);
+        Optional.ofNullable(clubModel.getTitles()).ifPresent(clubUpdated::setTitles);
+        Optional.ofNullable(clubModel.getStadium()).ifPresent(clubUpdated::setStadium);
+        Optional.ofNullable(clubModel.getLeague()).ifPresent(clubUpdated::setLeague);
 
-        clubRepository.saveAndFlush(clubBase);
+        clubRepository.saveAndFlush(clubUpdated);
     }
 
     public void deleteClubByName(String name){
