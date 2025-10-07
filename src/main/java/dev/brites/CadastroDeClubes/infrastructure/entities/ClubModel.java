@@ -2,6 +2,7 @@ package dev.brites.CadastroDeClubes.infrastructure.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "tb_clubs")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Data
 public class ClubModel {
 
@@ -19,7 +21,7 @@ public class ClubModel {
     private Integer titles;
     private String stadium;
     @ManyToOne
-    @JoinColumn(name = "league_id")
+    @JoinColumn(name = "id_league")
     private LeagueModel league;
 
 }
