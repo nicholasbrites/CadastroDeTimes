@@ -3,8 +3,11 @@ package dev.brites.CadastroDeClubes.controllers;
 import dev.brites.CadastroDeClubes.business.services.ClubService;
 import dev.brites.CadastroDeClubes.infrastructure.entities.ClubModel;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/club")
@@ -13,13 +16,24 @@ public class ClubController {
 
     private final ClubService clubService;
 
-    @PostMapping
+    @PostMapping("/single")
     public ResponseEntity<Void> saveClub(@RequestBody ClubModel clubModel){
         clubService.saveClub(clubModel);
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping
+    @PostMapping("/multiple")
+    public ResponseEntity<Void> saveAllClubs(@RequestBody List<ClubModel> clubModelList){
+        clubService.saveAllClubs(clubModelList);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/id")
+    public ResponseEntity<ClubModel> findClubById(@RequestParam Long id){
+        return ResponseEntity.ok(clubService.findClubById(id));
+    }
+
+    @GetMapping("/name")
     public ResponseEntity<ClubModel> findClubByName(@RequestParam String name){
         return ResponseEntity.ok(clubService.findClubByName(name));
     }
