@@ -1,5 +1,6 @@
 package dev.brites.CadastroDeClubes.business.services;
 
+import dev.brites.CadastroDeClubes.business.exceptions.ClubNotFoundException;
 import dev.brites.CadastroDeClubes.infrastructure.entities.ClubModel;
 import dev.brites.CadastroDeClubes.infrastructure.repositories.ClubRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +26,18 @@ public class ClubService {
         clubRepository.saveAllAndFlush(clubModelList);
     }
 
+    public List<ClubModel> findAllClubs(){
+        return clubRepository.findAll();
+    }
+
     public ClubModel findClubById(Long id){
-        return clubRepository.findById(id).orElseThrow(() -> new RuntimeException("Clube não encontrado no banco de dados."));
+        return clubRepository.findById(id)
+                .orElseThrow(() -> new ClubNotFoundException("Clube com id " + id + " não encontrado."));
     }
 
     public ClubModel findClubByName(String name){
-        return clubRepository.findClubByName(name).orElseThrow(() -> new RuntimeException("Clube não encontrado no banco de dados."));
+        return clubRepository.findClubByName(name)
+                .orElseThrow(() -> new ClubNotFoundException("Não foi encontrado o clube com nome " + name + "."));
     }
 
     public void updateClubById(Long id, ClubModel clubModel){
@@ -45,6 +52,7 @@ public class ClubService {
     }
 
     public void deleteClubByName(String name){
-        clubRepository.deleteClubByName(name);
+        ClubModel clubDeleted = findClubByName(name);
+        clubRepository.deleteClubByName(clubDeleted.getName());
     }
 }

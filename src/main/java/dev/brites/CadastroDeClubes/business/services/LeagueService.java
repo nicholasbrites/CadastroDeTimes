@@ -1,5 +1,7 @@
 package dev.brites.CadastroDeClubes.business.services;
 
+import dev.brites.CadastroDeClubes.business.exceptions.ClubNotFoundException;
+import dev.brites.CadastroDeClubes.business.exceptions.LeagueNotFoundExeception;
 import dev.brites.CadastroDeClubes.infrastructure.entities.LeagueModel;
 import dev.brites.CadastroDeClubes.infrastructure.repositories.LeagueRepository;
 import org.springframework.stereotype.Service;
@@ -25,12 +27,18 @@ public class LeagueService {
         leagueRepository.saveAllAndFlush(leagueModelList);
     }
 
+    public List<LeagueModel> findAllLeagues(){
+        return leagueRepository.findAll();
+    }
+
     public LeagueModel findLeagueById(Long id){
-        return leagueRepository.findById(id).orElseThrow(() -> new RuntimeException("Liga não encontrada no banco de dados."));
+        return leagueRepository.findById(id)
+                .orElseThrow(() -> new LeagueNotFoundExeception("Liga com id " + id + " não encontrada."));
     }
 
     public LeagueModel findLeagueByName(String name){
-        return leagueRepository.findLeagueByName(name).orElseThrow(() -> new RuntimeException("Liga não encontrada no banco de dados."));
+        return leagueRepository.findLeagueByName(name)
+                .orElseThrow(() -> new LeagueNotFoundExeception("Não foi encontrada a liga com o nome " + name + "."));
     }
 
     public void updateLeagueById(LeagueModel leagueModel, Long id){

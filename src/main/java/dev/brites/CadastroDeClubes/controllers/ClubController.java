@@ -2,6 +2,7 @@ package dev.brites.CadastroDeClubes.controllers;
 
 import dev.brites.CadastroDeClubes.business.services.ClubService;
 import dev.brites.CadastroDeClubes.infrastructure.entities.ClubModel;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
@@ -17,24 +18,29 @@ public class ClubController {
     private final ClubService clubService;
 
     @PostMapping("/single")
-    public ResponseEntity<Void> saveClub(@RequestBody ClubModel clubModel){
+    public ResponseEntity<Void> saveClub(@Valid @RequestBody ClubModel clubModel){
         clubService.saveClub(clubModel);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/multiple")
-    public ResponseEntity<Void> saveAllClubs(@RequestBody List<ClubModel> clubModelList){
+    public ResponseEntity<Void> saveAllClubs(@Valid @RequestBody List<ClubModel> clubModelList){
         clubService.saveAllClubs(clubModelList);
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/id")
-    public ResponseEntity<ClubModel> findClubById(@RequestParam Long id){
+    @GetMapping
+    public ResponseEntity<List<ClubModel>> findAllClubs(){
+        return ResponseEntity.ok(clubService.findAllClubs());
+    }
+
+    @GetMapping("/id/{id}")
+    public ResponseEntity<ClubModel> findClubById(@PathVariable Long id){
         return ResponseEntity.ok(clubService.findClubById(id));
     }
 
-    @GetMapping("/name")
-    public ResponseEntity<ClubModel> findClubByName(@RequestParam String name){
+    @GetMapping("/{name}")
+    public ResponseEntity<ClubModel> findClubByName(@PathVariable String name){
         return ResponseEntity.ok(clubService.findClubByName(name));
     }
 
