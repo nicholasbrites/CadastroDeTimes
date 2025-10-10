@@ -1,10 +1,9 @@
 package dev.brites.CadastroDeClubes.controllers;
 
 import dev.brites.CadastroDeClubes.business.services.ClubService;
-import dev.brites.CadastroDeClubes.infrastructure.entities.ClubModel;
+import dev.brites.CadastroDeClubes.infrastructure.models.ClubModel;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

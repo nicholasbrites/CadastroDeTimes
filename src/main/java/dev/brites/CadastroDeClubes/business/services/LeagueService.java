@@ -1,11 +1,9 @@
 package dev.brites.CadastroDeClubes.business.services;
 
-import dev.brites.CadastroDeClubes.business.exceptions.ClubNotFoundException;
 import dev.brites.CadastroDeClubes.business.exceptions.LeagueNotFoundExeception;
-import dev.brites.CadastroDeClubes.infrastructure.entities.LeagueModel;
+import dev.brites.CadastroDeClubes.infrastructure.models.LeagueModel;
 import dev.brites.CadastroDeClubes.infrastructure.repositories.LeagueRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 import java.util.Optional;

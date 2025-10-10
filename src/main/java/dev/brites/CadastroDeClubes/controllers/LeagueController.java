@@ -1,7 +1,7 @@
 package dev.brites.CadastroDeClubes.controllers;
 
 import dev.brites.CadastroDeClubes.business.services.LeagueService;
-import dev.brites.CadastroDeClubes.infrastructure.entities.LeagueModel;
+import dev.brites.CadastroDeClubes.infrastructure.models.LeagueModel;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

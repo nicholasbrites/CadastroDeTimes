@@ -1,4 +1,4 @@
-package dev.brites.CadastroDeClubes.infrastructure.entities;
+package dev.brites.CadastroDeClubes.infrastructure.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;

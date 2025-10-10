@@ -1,9 +1,8 @@
 package dev.brites.CadastroDeClubes.business.services;
 
 import dev.brites.CadastroDeClubes.business.exceptions.ClubNotFoundException;
-import dev.brites.CadastroDeClubes.infrastructure.entities.ClubModel;
+import dev.brites.CadastroDeClubes.infrastructure.models.ClubModel;
 import dev.brites.CadastroDeClubes.infrastructure.repositories.ClubRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
